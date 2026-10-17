@@ -1,0 +1,59 @@
+type,model,name,quant,file_gb,single_run_score,repeat3_mean,repeat3_std,gen_16k,gen_32k,gen_64k,prompt_16k,prompt_32k,prompt_64k,ttft_32k_s,ttft_64k_s,vram_16k_gb,vram_32k_gb,vram_64k_gb,sysram_weights_gb,spill_64k,native_max_ctx,usable_ctx_24gb,ctx_source,vram_at_max_ctx_gb,KV_cache,score_per_vram_gb
+local,qwen38flashnext-gsq-strata,Qwen3.8-Flash-Next GSQ-RCO (Strata engine),GSQ-RCO IQ3_XXS,70.63,91.5,92.5,2.9,172.2,170.5,174.2,2899.8,3228.6,3611.7,10.4,19.2,22.5,22.5,22.5,46.6,,262144,262144,measured = native limit (Strata 256K config),,,4.06
+local,museglimmer-30b-q4km-dflash16,Muse-Glimmer-30B + DFlash (n-max 16),Q4_K_M,15.61,94.3,86.2,2.8,111.93,127.39,109.84,2690.3,2759.6,2574.8,10.088,21.663,18.5,18.6,18.8,,,131072,131072,measured = native limit,18.9,q8_0/q8_0,5.07
+local,museglimmer-30b-q4km-dflash8,Muse-Glimmer-30B + DFlash (n-max 8),Q4_K_M,15.61,85.5,,,94.84,99.66,91.41,2813.6,2767.2,2649.9,10.041,20.996,18.5,18.6,18.8,,,131072,131072,native limit,,q8_0/q8_0,4.6
+local,museglimmer-30b-q4km,Muse-Glimmer-30B,Q4_K_M,15.61,85.5,92.5,5.1,46.86,45.69,43.32,3375.9,3318.3,3145.7,8.423,17.733,16.0,16.2,16.4,,,131072,131072,measured = native limit,16.5,q8_0/q8_0,5.29
+local,qwen38flashnext-iq3xxs-b11609-mtp,"Qwen3.8-Flash-Next + MTP (llama.cpp b11609, partial CPU offload)",UD-IQ3_XXS,76.33,79.3,88.1,4.4,39.6,40.94,35.18,208.2,201.6,200.0,135.79,275.573,21.3,21.4,21.4,56.4,,262144,,weights partly in system RAM,,q8_0/q8_0,3.71
+local,qwen38flashnext-iq3xxs,Qwen3.8-Flash-Next (partial CPU offload),UD-IQ3_XXS,76.33,79.3,88.1,4.4,28.25,27.04,25.03,217.2,215.5,209.6,127.011,262.785,21.7,21.5,21.5,56.3,,262144,,weights partly in system RAM,,q8_0/q8_0,3.68
+local,qwen36-27b-q4km-mtp6,Qwen3.6-27B MTP + MTP6 (p-min 0.6),Q4_K_M,15.93,88.1,85.1,5.8,98.49,118.74,106.11,2606.1,2492.8,2251.1,11.304,25.248,18.0,18.7,20.2,,,262144,135168,measured,22.8,q8_0/q8_0,4.7
+local,qwen36-27b-q4km,Qwen3.6-27B,Q4_K_M,15.66,88.1,85.1,5.8,45.09,43.14,39.87,2801.8,2669.4,2409.5,10.561,23.523,16.7,17.3,18.5,,,262144,192512,measured,22.8,q8_0/q8_0,5.1
+local,ornith15-q4km,Ornith-1.5-35B-A3B,Q4_K_M,20.22,82.3,84.1,4.5,172.25,161.23,143.49,6341.4,6057.9,5598.3,4.624,10.049,20.6,20.8,21.2,,,262144,217088,measured,22.8,q8_0/q8_0,3.96
+local,qwen36-35b-iq4xs,Qwen3.6-35B-A3B,IQ4_XS,17.51,81.7,82.9,2.5,172.72,162.18,143.74,7107.4,6758.6,6171.4,4.145,9.118,18.4,18.6,19.1,,,262144,262144,measured = native limit,21.2,q8_0/q8_0,4.39
+local,gemma4-31b-qat,Gemma-4-31B-it QAT,UD-Q4_K_XL,16.1,84.7,81.3,1.1,38.16,33.61,27.68,2640.7,2411.1,2090.9,11.784,27.404,18.4,19.2,20.8,,,262144,114688,measured,22.8,q8_0/q8_0,4.4
+local,ornith10-q4km,Ornith-1.0-35B,Q4_K_M,19.71,84.4,81.2,2.6,171.41,161.15,142.34,6489.7,6203.6,5705.2,4.524,9.833,20.6,20.8,21.2,,,262144,217088,measured,22.8,q8_0/q8_0,4.05
+local,qwen38-27b-iq4xs-mtp6,Qwen3.8-27B + MTP6 (p-min 0.6),UD-IQ4_XS,13.27,83.6,77.5,1.0,171.39,153.39,128.45,2732.5,2595.7,2336.1,11.031,24.385,16.3,17.0,18.4,,,262144,172032,measured,22.7,q8_0/q8_0,4.92
+local,qwen38-27b-iq4xs,Qwen3.8-27B,UD-IQ4_XS,13.27,83.6,77.5,1.0,51.14,49.04,44.63,2917.0,2775.9,2511.3,10.134,22.62,14.1,14.7,15.9,,,262144,262144,measured = native limit,22.8,q8_0/q8_0,5.69
+local,qwen3codernext-iq4xs-offload,Qwen3-Coder-Next 80B-A3B (partial CPU offload),UD-IQ4_XS,35.79,69.6,75.5,3.3,50.06,49.24,46.16,490.3,486.2,481.3,56.307,114.437,21.7,21.6,21.6,15.6,,262144,,weights partly in system RAM,,q8_0/q8_0,3.22
+local,qwen3coder-30b-iq4xs,Qwen3-Coder-30B-A3B-Instruct,IQ4_XS,15.25,72.7,70.4,5.3,154.15,115.07,77.55,7430.5,6017.3,4350.4,4.865,13.525,16.8,17.7,19.3,,,262144,139264,measured,22.7,q8_0/q8_0,4.11
+local,gptoss-20b-mxfp4,gpt-oss-20b (reasoning auto),MXFP4,11.28,77.0,70.2,8.6,192.42,171.39,142.23,11238.6,10461.5,8938.6,2.768,6.409,11.8,12.0,12.5,,,131072,131072,measured = native limit,13.1,q8_0/q8_0,6.39
+local,gemma4-26b-a4b-qat,Gemma-4-26B-A4B-it QAT,UD-Q4_K_XL,13.27,56.3,65.2,9.1,154.36,134.39,109.25,8900.9,8499.2,7370.1,3.336,7.7,14.6,14.8,15.3,,,262144,262144,measured = native limit,17.8,q8_0/q8_0,3.81
+local,devstral2-24b-q4km,Devstral-Small-2-24B-Instruct-2512,Q4_K_M,13.35,64.4,63.0,1.4,52.0,47.12,39.98,3618.8,3301.2,2774.7,9.01,21.55,15.4,16.7,19.5,,,393216,106496,measured,22.6,q8_0/q8_0,3.85
+local,granite41-30b-q4km-kvq4,granite-4.1-30b (KV q4_0),Q4_K_M,16.29,49.7,56.9,2.6,41.03,36.32,29.73,2814.0,2504.0,2056.2,11.255,27.423,18.5,19.6,22.0,,,131072,81920,measured,22.7,q4_0/q4_0,2.53
+local,granite41-30b-q4km,granite-4.1-30b,Q4_K_M,16.29,49.7,56.9,2.6,40.89,36.21,3.01,2798.8,2487.1,43.8,11.836,1256.718,19.5,21.6,24.0,,yes,131072,53248,estimated (spilled at 64K),,q8_0/q8_0,2.3
+local,glm47flash-iq4xs,GLM-4.7-Flash,IQ4_XS,15.15,52.1,53.7,2.6,130.14,102.61,72.47,4653.4,3244.2,1965.0,8.636,28.517,16.4,16.8,17.8,,,202752,202752,measured = native limit,21.3,q8_0/q8_0,3.09
+local,nemotron3nano-30b-iq4xs,Nemotron-3-Nano-30B-A3B,IQ4_XS,16.92,54.1,46.2,1.3,220.37,201.56,182.36,8922.0,8414.5,8175.0,3.318,6.858,17.7,17.8,17.9,,,1048576,1048576,measured = native limit,22.4,q8_0/q8_0,3.03
+local,nemotron3nano-30b-iq4xs-b11609,Nemotron-3-Nano-30B-A3B [b11609],IQ4_XS,16.92,,,,221.25,208.42,187.29,8904.5,8695.1,8160.5,3.205,6.874,17.7,17.8,17.9,,,1048576,1048576,native limit,,q8_0/q8_0,
+local,gptoss-20b-mxfp4-b11609,gpt-oss-20b (reasoning auto) [b11609],MXFP4,11.28,,,,188.76,169.91,141.45,11531.7,10720.8,9072.3,2.695,6.317,11.8,12.1,12.5,,,131072,131072,native limit,,q8_0/q8_0,
+local,ornith15-q4km-b11609,Ornith-1.5-35B-A3B [b11609],Q4_K_M,20.22,,,,179.51,168.37,149.45,6861.9,6537.3,5997.8,4.297,9.377,20.6,20.8,21.2,,,262144,217088,estimated,,q8_0/q8_0,
+local,ornith10-q4km-b11609,Ornith-1.0-35B [b11609],Q4_K_M,19.71,,,,179.83,168.26,149.32,7025.1,6705.2,6123.7,4.169,9.172,20.6,20.8,21.2,,,262144,217088,estimated,,q8_0/q8_0,
+local,qwen36-35b-iq4xs-b11609,Qwen3.6-35B-A3B [b11609],IQ4_XS,17.51,,,,175.21,164.91,146.24,7726.6,7341.8,6651.9,3.841,8.459,18.4,18.6,19.1,,,262144,262144,native limit,,q8_0/q8_0,
+local,qwen38-27b-iq4xs-mtp6-b11609,Qwen3.8-27B + MTP6 (p-min 0.6) [b11609],UD-IQ4_XS,13.27,,,,175.5,156.93,130.42,2909.9,2753.1,2464.6,10.356,22.982,16.3,17.0,18.4,,,262144,172032,estimated,,q8_0/q8_0,
+local,gemma4-26b-a4b-qat-b11609,Gemma-4-26B-A4B-it QAT [b11609],UD-Q4_K_XL,13.27,,,,155.31,135.1,109.91,9297.9,8792.1,7604.8,3.24,7.477,14.6,14.8,15.3,,,262144,262144,native limit,,q8_0/q8_0,
+local,museglimmer-30b-q4km-dflash16-b11609,Muse-Glimmer-30B + DFlash (n-max 16) [b11609],Q4_K_M,15.61,,,,118.48,118.99,95.08,2630.3,2674.6,2558.3,10.397,21.759,18.5,18.6,18.8,,,131072,131072,native limit,,q8_0/q8_0,
+local,qwen36-27b-q4km-mtp6-b11609,Qwen3.6-27B MTP + MTP6 (p-min 0.6) [b11609],Q4_K_M,15.93,,,,103.0,115.38,102.49,2771.5,2638.4,2370.1,10.67,24.046,18.0,18.8,20.2,,,262144,131072,estimated,,q8_0/q8_0,
+local,qwen3coder-30b-iq4xs-b11609,Qwen3-Coder-30B-A3B-Instruct [b11609],IQ4_XS,15.25,,,,153.89,114.6,77.34,7716.9,6231.8,4472.3,4.697,13.223,16.8,17.7,19.3,,,262144,139264,estimated,,q8_0/q8_0,
+local,glm47flash-iq4xs-b11609,GLM-4.7-Flash [b11609],IQ4_XS,15.15,,,,132.15,104.57,72.9,4751.9,3298.0,1994.3,8.492,28.163,16.4,16.9,17.8,,,202752,202752,native limit,,q8_0/q8_0,
+local,qwen3codernext-iq4xs-offload-b11609,Qwen3-Coder-Next 80B-A3B (partial CPU offload) [b11609],UD-IQ4_XS,35.79,,,,49.5,53.9,50.26,527.3,518.9,516.1,52.759,106.683,21.7,21.6,21.6,15.6,,262144,,weights partly in system RAM,,q8_0/q8_0,
+local,qwen38-27b-iq4xs-b11609,Qwen3.8-27B [b11609],UD-IQ4_XS,13.27,,,,51.52,49.24,45.14,3188.1,3005.2,2682.1,9.377,21.045,14.1,14.7,15.9,,,262144,262144,native limit,,q8_0/q8_0,
+local,devstral2-24b-q4km-b11609,Devstral-Small-2-24B-Instruct-2512 [b11609],Q4_K_M,13.35,,,,52.23,47.31,40.48,3599.8,3276.9,2747.2,9.024,21.377,15.4,16.7,19.5,,,393216,106496,estimated,,q8_0/q8_0,
+local,museglimmer-30b-q4km-b11609,Muse-Glimmer-30B [b11609],Q4_K_M,15.61,,,,47.05,45.79,43.64,3364.3,3298.1,3139.3,8.476,17.775,16.1,16.2,16.4,,,131072,131072,native limit,,q8_0/q8_0,
+local,qwen36-27b-q4km-b11609,Qwen3.6-27B [b11609],Q4_K_M,15.66,,,,45.36,43.52,40.23,3032.0,2884.6,2581.2,9.74,21.926,16.7,17.3,18.5,,,262144,192512,estimated,,q8_0/q8_0,
+local,granite41-30b-q4km-kvq4-b11609,granite-4.1-30b (KV q4_0) [b11609],Q4_K_M,16.29,,,,41.34,36.76,30.58,2808.7,2499.7,2044.6,11.507,28.107,18.5,19.6,22.0,,,131072,81920,estimated,,q4_0/q4_0,
+local,gemma4-31b-qat-b11609,Gemma-4-31B-it QAT [b11609],UD-Q4_K_XL,16.1,,,,38.25,33.87,27.84,2699.1,2531.1,2146.3,11.24,26.608,18.4,19.2,20.9,,,262144,110592,estimated,,q8_0/q8_0,
+local,qwen38flashnext-gsq-iq3xxs-b11609,"Qwen3.8-Flash-Next GSQ-RCO (llama.cpp b11609, partial CPU offload)",GSQ-RCO IQ3_XXS,70.63,,,,33.44,32.75,31.09,304.3,296.7,289.0,92.252,190.602,21.7,21.6,21.7,50.5,,262144,,weights partly in system RAM,,q8_0/q8_0,
+local,qwen38flashnext-iq3xxs-b11609,"Qwen3.8-Flash-Next (llama.cpp b11609, partial CPU offload)",UD-IQ3_XXS,76.33,,,,30.32,29.44,28.52,250.6,238.8,231.0,114.86,238.439,21.7,21.5,21.5,56.3,,262144,,weights partly in system RAM,,q8_0/q8_0,
+local,devstral2-24b-q4km-kvq4,Devstral-Small-2-24B-Instruct-2512 (KV q4_0),Q4_K_M,13.35,,,,,,,,,,,,,,,,,393216,,not tested,,,
+local,gemma4-31b-qat-kvq4,Gemma-4-31B-it QAT (KV q4_0),UD-Q4_K_XL,16.1,,,,,,,,,,,,,,,,,262144,,not tested,,,
+local,ornith10-q4km-kvq4,Ornith-1.0-35B (KV q4_0),Q4_K_M,19.71,,,,,,,,,,,,,,,,,262144,,not tested,,,
+local,ornith15-q4km-kvq4,Ornith-1.5-35B-A3B (KV q4_0),Q4_K_M,20.22,,,,,,,,,,,,,,,,,262144,,not tested,,,
+local,qwen36-27b-q4km-kvq4,Qwen3.6-27B (KV q4_0),Q4_K_M,15.66,,,,,,,,,,,,,,,,,262144,,not tested,,,
+local,qwen36-27b-q4km-mtp6-kvq4,Qwen3.6-27B MTP + MTP6 (p-min 0.6) (KV q4_0),Q4_K_M,15.93,,,,,,,,,,,,,,,,,262144,,not tested,,,
+local,qwen38-27b-iq4xs-mtp6-kvq4,Qwen3.8-27B + MTP6 (p-min 0.6) (KV q4_0),UD-IQ4_XS,13.27,,,,,,,,,,,,,,,,,262144,,not tested,,,
+local,qwen38flashnext-iq3xxs-mtp,Qwen3.8-Flash-Next + MTP (partial CPU offload),UD-IQ3_XXS,76.33,,,,,,,,,,,,,,,,,262144,,weights partly in system RAM,,,
+local,qwen3coder-30b-iq4xs-kvq4,Qwen3-Coder-30B-A3B-Instruct (KV q4_0),IQ4_XS,15.25,,,,,,,,,,,,,,,,,262144,,not tested,,,
+cloud,sonnet55-medium,Claude Sonnet 5.5 (effort medium),cloud,,,98.8,0.8,,,,,,,,,,,,,,,,cloud,,,
+cloud,gpt61sol-medium,GPT-6.1 Sol (reasoning medium),cloud,,,97.7,0.2,,,,,,,,,,,,,,,,cloud,,,
+cloud,haiku55-medium,Claude Haiku 5.5 (effort medium),cloud,,,96.8,0.9,,,,,,,,,,,,,,,,cloud,,,
+cloud,gpt6luna-xhigh,GPT-6 Luna (reasoning xhigh),cloud,,,96.3,0.3,,,,,,,,,,,,,,,,cloud,,,
+cloud,haiku55-xhigh,Claude Haiku 5.5 (effort xhigh),cloud,,,94.5,4.7,,,,,,,,,,,,,,,,cloud,,,
+cloud,gpt6luna-medium,GPT-6 Luna (reasoning medium),cloud,,,92.8,0.5,,,,,,,,,,,,,,,,cloud,,,

@@ -1,0 +1,59 @@
+﻿model,name,quant,source,file,size_gib,sha256_verified,phase
+devstral2-24b-q4km,Devstral-Small-2-24B-Instruct-2512,Q4_K_M,huggingface.co/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF,Devstral-Small-2-24B-Instruct-2512-Q4_K_M.gguf,13.35,True,2
+devstral2-24b-q4km-b11609,Devstral-Small-2-24B-Instruct-2512 [b11609],Q4_K_M,huggingface.co/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF,Devstral-Small-2-24B-Instruct-2512-Q4_K_M.gguf,13.35,True,7
+devstral2-24b-q4km-kvq4,Devstral-Small-2-24B-Instruct-2512 (KV q4_0),Q4_K_M,huggingface.co/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF,Devstral-Small-2-24B-Instruct-2512-Q4_K_M.gguf,13.35,True,5
+gemma4-26b-a4b-qat,Gemma-4-26B-A4B-it QAT,UD-Q4_K_XL,huggingface.co/unsloth/gemma-4-26B-A4B-it-qat-GGUF,gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf,13.27,True,4
+gemma4-26b-a4b-qat-b11609,Gemma-4-26B-A4B-it QAT [b11609],UD-Q4_K_XL,huggingface.co/unsloth/gemma-4-26B-A4B-it-qat-GGUF,gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf,13.27,True,7
+gemma4-31b-qat,Gemma-4-31B-it QAT,UD-Q4_K_XL,,gemma-4-31B-it-qat-UD-Q4_K_XL.gguf,16.1,False,4
+gemma4-31b-qat-b11609,Gemma-4-31B-it QAT [b11609],UD-Q4_K_XL,,gemma-4-31B-it-qat-UD-Q4_K_XL.gguf,16.1,False,7
+gemma4-31b-qat-kvq4,Gemma-4-31B-it QAT (KV q4_0),UD-Q4_K_XL,,gemma-4-31B-it-qat-UD-Q4_K_XL.gguf,16.1,False,5
+glm47flash-iq4xs,GLM-4.7-Flash,IQ4_XS,,GLM-4.7-Flash-IQ4_XS.gguf,15.15,False,4
+glm47flash-iq4xs-b11609,GLM-4.7-Flash [b11609],IQ4_XS,,GLM-4.7-Flash-IQ4_XS.gguf,15.15,False,7
+gpt61sol-medium,GPT-6.1 Sol (reasoning medium),cloud,,,,False,6
+gpt6luna-medium,GPT-6 Luna (reasoning medium),cloud,,,,False,6
+gpt6luna-xhigh,GPT-6 Luna (reasoning xhigh),cloud,,,,False,6
+gptoss-20b-mxfp4,gpt-oss-20b (reasoning auto),MXFP4,,gpt-oss-20b-mxfp4.gguf,11.28,False,4
+gptoss-20b-mxfp4-b11609,gpt-oss-20b (reasoning auto) [b11609],MXFP4,,gpt-oss-20b-mxfp4.gguf,11.28,False,7
+granite41-30b-q4km,granite-4.1-30b,Q4_K_M,huggingface.co/ibm-granite/granite-4.1-30b-GGUF,granite-4.1-30b-Q4_K_M.gguf,16.29,True,3
+granite41-30b-q4km-kvq4,granite-4.1-30b (KV q4_0),Q4_K_M,huggingface.co/ibm-granite/granite-4.1-30b-GGUF,granite-4.1-30b-Q4_K_M.gguf,16.29,True,3
+granite41-30b-q4km-kvq4-b11609,granite-4.1-30b (KV q4_0) [b11609],Q4_K_M,huggingface.co/ibm-granite/granite-4.1-30b-GGUF,granite-4.1-30b-Q4_K_M.gguf,16.29,True,7
+haiku55-medium,Claude Haiku 5.5 (effort medium),cloud,,,,False,6
+haiku55-xhigh,Claude Haiku 5.5 (effort xhigh),cloud,,,,False,6
+museglimmer-30b-q4km,Muse-Glimmer-30B,Q4_K_M,huggingface.co/meta-models/Muse-Glimmer-30B-GGUF,Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf,15.61,True,4
+museglimmer-30b-q4km-b11609,Muse-Glimmer-30B [b11609],Q4_K_M,huggingface.co/meta-models/Muse-Glimmer-30B-GGUF,Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf,15.61,True,7
+museglimmer-30b-q4km-dflash16,Muse-Glimmer-30B + DFlash (n-max 16),Q4_K_M,huggingface.co/meta-models/Muse-Glimmer-30B-GGUF,Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf,15.61,True,4
+museglimmer-30b-q4km-dflash16-b11609,Muse-Glimmer-30B + DFlash (n-max 16) [b11609],Q4_K_M,huggingface.co/meta-models/Muse-Glimmer-30B-GGUF,Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf,15.61,True,7
+museglimmer-30b-q4km-dflash8,Muse-Glimmer-30B + DFlash (n-max 8),Q4_K_M,huggingface.co/meta-models/Muse-Glimmer-30B-GGUF,Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf,15.61,True,4
+nemotron3nano-30b-iq4xs,Nemotron-3-Nano-30B-A3B,IQ4_XS,,Nemotron-3-Nano-30B-A3B-IQ4_XS.gguf,16.92,False,4
+nemotron3nano-30b-iq4xs-b11609,Nemotron-3-Nano-30B-A3B [b11609],IQ4_XS,,Nemotron-3-Nano-30B-A3B-IQ4_XS.gguf,16.92,False,7
+ornith10-q4km,Ornith-1.0-35B,Q4_K_M,,ornith-1.0-35b-Q4_K_M.gguf,19.71,False,4
+ornith10-q4km-b11609,Ornith-1.0-35B [b11609],Q4_K_M,,ornith-1.0-35b-Q4_K_M.gguf,19.71,False,7
+ornith10-q4km-kvq4,Ornith-1.0-35B (KV q4_0),Q4_K_M,,ornith-1.0-35b-Q4_K_M.gguf,19.71,False,5
+ornith15-q4km,Ornith-1.5-35B-A3B,Q4_K_M,huggingface.co/ornith-ai/Ornith-1.5-35B-A3B-GGUF,Ornith-1.5-35B-Q4_K_M.gguf,20.22,True,1
+ornith15-q4km-b11609,Ornith-1.5-35B-A3B [b11609],Q4_K_M,huggingface.co/ornith-ai/Ornith-1.5-35B-A3B-GGUF,Ornith-1.5-35B-Q4_K_M.gguf,20.22,True,7
+ornith15-q4km-kvq4,Ornith-1.5-35B-A3B (KV q4_0),Q4_K_M,huggingface.co/ornith-ai/Ornith-1.5-35B-A3B-GGUF,Ornith-1.5-35B-Q4_K_M.gguf,20.22,True,5
+qwen36-27b-q4km,Qwen3.6-27B,Q4_K_M,huggingface.co/unsloth/Qwen3.6-27B-GGUF,Qwen3.6-27B-Q4_K_M.gguf,15.66,True,4
+qwen36-27b-q4km-b11609,Qwen3.6-27B [b11609],Q4_K_M,huggingface.co/unsloth/Qwen3.6-27B-GGUF,Qwen3.6-27B-Q4_K_M.gguf,15.66,True,7
+qwen36-27b-q4km-kvq4,Qwen3.6-27B (KV q4_0),Q4_K_M,huggingface.co/unsloth/Qwen3.6-27B-GGUF,Qwen3.6-27B-Q4_K_M.gguf,15.66,True,5
+qwen36-27b-q4km-mtp6,Qwen3.6-27B MTP + MTP6 (p-min 0.6),Q4_K_M,huggingface.co/unsloth/Qwen3.6-27B-MTP-GGUF,Qwen3.6-27B-Q4_K_M.gguf,15.93,True,4
+qwen36-27b-q4km-mtp6-b11609,Qwen3.6-27B MTP + MTP6 (p-min 0.6) [b11609],Q4_K_M,huggingface.co/unsloth/Qwen3.6-27B-MTP-GGUF,Qwen3.6-27B-Q4_K_M.gguf,15.93,True,7
+qwen36-27b-q4km-mtp6-kvq4,Qwen3.6-27B MTP + MTP6 (p-min 0.6) (KV q4_0),Q4_K_M,huggingface.co/unsloth/Qwen3.6-27B-MTP-GGUF,Qwen3.6-27B-Q4_K_M.gguf,15.93,True,5
+qwen36-35b-iq4xs,Qwen3.6-35B-A3B,IQ4_XS,,Qwen_Qwen3.6-35B-A3B-IQ4_XS.gguf,17.51,False,4
+qwen36-35b-iq4xs-b11609,Qwen3.6-35B-A3B [b11609],IQ4_XS,,Qwen_Qwen3.6-35B-A3B-IQ4_XS.gguf,17.51,False,7
+qwen38-27b-iq4xs,Qwen3.8-27B,UD-IQ4_XS,huggingface.co/unsloth/Qwen3.8-27B-GGUF,Qwen3.8-27B-UD-IQ4_XS.gguf,13.27,True,4
+qwen38-27b-iq4xs-b11609,Qwen3.8-27B [b11609],UD-IQ4_XS,huggingface.co/unsloth/Qwen3.8-27B-GGUF,Qwen3.8-27B-UD-IQ4_XS.gguf,13.27,True,7
+qwen38-27b-iq4xs-mtp6,Qwen3.8-27B + MTP6 (p-min 0.6),UD-IQ4_XS,huggingface.co/unsloth/Qwen3.8-27B-GGUF,Qwen3.8-27B-UD-IQ4_XS.gguf,13.27,True,4
+qwen38-27b-iq4xs-mtp6-b11609,Qwen3.8-27B + MTP6 (p-min 0.6) [b11609],UD-IQ4_XS,huggingface.co/unsloth/Qwen3.8-27B-GGUF,Qwen3.8-27B-UD-IQ4_XS.gguf,13.27,True,7
+qwen38-27b-iq4xs-mtp6-kvq4,Qwen3.8-27B + MTP6 (p-min 0.6) (KV q4_0),UD-IQ4_XS,huggingface.co/unsloth/Qwen3.8-27B-GGUF,Qwen3.8-27B-UD-IQ4_XS.gguf,13.27,True,5
+qwen38flashnext-gsq-iq3xxs-b11609,"Qwen3.8-Flash-Next GSQ-RCO (llama.cpp b11609, partial CPU offload)",GSQ-RCO IQ3_XXS,huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,Qwen3.8-Flash-Next-GSQ-RCO-IQ3_XXS-00001-of-00002.gguf,43.81,True,7
+qwen38flashnext-gsq-strata,Qwen3.8-Flash-Next GSQ-RCO (Strata engine),GSQ-RCO IQ3_XXS,huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,Qwen3.8-Flash-Next-GSQ-RCO-IQ3_XXS-00001-of-00002.gguf,43.81,True,7
+qwen38flashnext-iq3xxs,Qwen3.8-Flash-Next (partial CPU offload),UD-IQ3_XXS,huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF,Qwen3.8-Flash-Next-UD-IQ3_XXS-00001-of-00003.gguf,0.01,True,4
+qwen38flashnext-iq3xxs-b11609,"Qwen3.8-Flash-Next (llama.cpp b11609, partial CPU offload)",UD-IQ3_XXS,huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF,Qwen3.8-Flash-Next-UD-IQ3_XXS-00001-of-00003.gguf,0.01,True,4
+qwen38flashnext-iq3xxs-b11609-mtp,"Qwen3.8-Flash-Next + MTP (llama.cpp b11609, partial CPU offload)",UD-IQ3_XXS,huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF,Qwen3.8-Flash-Next-UD-IQ3_XXS-00001-of-00003.gguf,0.01,True,4
+qwen38flashnext-iq3xxs-mtp,Qwen3.8-Flash-Next + MTP (partial CPU offload),UD-IQ3_XXS,huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF,Qwen3.8-Flash-Next-UD-IQ3_XXS-00001-of-00003.gguf,0.01,True,4
+qwen3coder-30b-iq4xs,Qwen3-Coder-30B-A3B-Instruct,IQ4_XS,,Qwen3-Coder-30B-A3B-Instruct-IQ4_XS.gguf,15.25,False,4
+qwen3coder-30b-iq4xs-b11609,Qwen3-Coder-30B-A3B-Instruct [b11609],IQ4_XS,,Qwen3-Coder-30B-A3B-Instruct-IQ4_XS.gguf,15.25,False,7
+qwen3coder-30b-iq4xs-kvq4,Qwen3-Coder-30B-A3B-Instruct (KV q4_0),IQ4_XS,,Qwen3-Coder-30B-A3B-Instruct-IQ4_XS.gguf,15.25,False,5
+qwen3codernext-iq4xs-offload,Qwen3-Coder-Next 80B-A3B (partial CPU offload),UD-IQ4_XS,huggingface.co/unsloth/Qwen3-Coder-Next-GGUF,Qwen3-Coder-Next-UD-IQ4_XS.gguf,35.79,True,4
+qwen3codernext-iq4xs-offload-b11609,Qwen3-Coder-Next 80B-A3B (partial CPU offload) [b11609],UD-IQ4_XS,huggingface.co/unsloth/Qwen3-Coder-Next-GGUF,Qwen3-Coder-Next-UD-IQ4_XS.gguf,35.79,True,7
+sonnet55-medium,Claude Sonnet 5.5 (effort medium),cloud,,,,False,6

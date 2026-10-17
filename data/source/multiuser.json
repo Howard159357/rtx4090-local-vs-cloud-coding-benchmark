@@ -1,0 +1,298 @@
+{
+ "Strata default (one request at a time)": [
+  {
+   "clients": 1,
+   "wall_s": 5.0,
+   "aggregate_tok_s": 161.4,
+   "per_client_tok_s": 174.9,
+   "max_wait_first_token_s": 0.4,
+   "avg_total_s": 5.0,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.4,
+     "total_s": 5.0,
+     "tok_s": 174.9
+    }
+   }
+  },
+  {
+   "clients": 2,
+   "wall_s": 8.4,
+   "aggregate_tok_s": 190.2,
+   "per_client_tok_s": 200.8,
+   "max_wait_first_token_s": 4.4,
+   "avg_total_s": 6.2,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.1,
+     "total_s": 4.1,
+     "tok_s": 200.1
+    },
+    "1": {
+     "tokens": 800,
+     "ttft_s": 4.4,
+     "total_s": 8.4,
+     "tok_s": 201.5
+    }
+   }
+  },
+  {
+   "clients": 4,
+   "wall_s": 17.7,
+   "aggregate_tok_s": 180.7,
+   "per_client_tok_s": 197.6,
+   "max_wait_first_token_s": 13.9,
+   "avg_total_s": 11.3,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.3,
+     "total_s": 4.5,
+     "tok_s": 193.2
+    },
+    "2": {
+     "tokens": 800,
+     "ttft_s": 4.9,
+     "total_s": 9.5,
+     "tok_s": 174.3
+    },
+    "1": {
+     "tokens": 800,
+     "ttft_s": 9.8,
+     "total_s": 13.6,
+     "tok_s": 212.3
+    },
+    "3": {
+     "tokens": 800,
+     "ttft_s": 13.9,
+     "total_s": 17.7,
+     "tok_s": 210.5
+    }
+   }
+  }
+ ],
+ "Strata parallel 4": [
+  {
+   "clients": 1,
+   "wall_s": 7.2,
+   "aggregate_tok_s": 110.9,
+   "per_client_tok_s": 120.3,
+   "max_wait_first_token_s": 0.6,
+   "avg_total_s": 7.2,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.6,
+     "total_s": 7.2,
+     "tok_s": 120.3
+    }
+   }
+  },
+  {
+   "clients": 2,
+   "wall_s": 12.2,
+   "aggregate_tok_s": 131.2,
+   "per_client_tok_s": 70.5,
+   "max_wait_first_token_s": 1.1,
+   "avg_total_s": 12.1,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 1.1,
+     "total_s": 12.1,
+     "tok_s": 72.5
+    },
+    "1": {
+     "tokens": 800,
+     "ttft_s": 0.5,
+     "total_s": 12.2,
+     "tok_s": 68.6
+    }
+   }
+  },
+  {
+   "clients": 4,
+   "wall_s": 22.8,
+   "aggregate_tok_s": 140.6,
+   "per_client_tok_s": 38.2,
+   "max_wait_first_token_s": 1.7,
+   "avg_total_s": 22.3,
+   "requests": {
+    "3": {
+     "tokens": 800,
+     "ttft_s": 1.7,
+     "total_s": 22.0,
+     "tok_s": 39.3
+    },
+    "0": {
+     "tokens": 800,
+     "ttft_s": 1.7,
+     "total_s": 22.1,
+     "tok_s": 39.2
+    },
+    "1": {
+     "tokens": 800,
+     "ttft_s": 0.1,
+     "total_s": 22.2,
+     "tok_s": 36.3
+    },
+    "2": {
+     "tokens": 800,
+     "ttft_s": 1.7,
+     "total_s": 22.8,
+     "tok_s": 37.9
+    }
+   }
+  }
+ ],
+ "Muse + DFlash16 (-np 4)": [
+  {
+   "clients": 1,
+   "wall_s": 8.1,
+   "aggregate_tok_s": 98.8,
+   "per_client_tok_s": 101.8,
+   "max_wait_first_token_s": 0.2,
+   "avg_total_s": 8.1,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.2,
+     "total_s": 8.1,
+     "tok_s": 101.8
+    }
+   }
+  },
+  {
+   "clients": 2,
+   "wall_s": 9.6,
+   "aggregate_tok_s": 166.4,
+   "per_client_tok_s": 90.4,
+   "max_wait_first_token_s": 0.3,
+   "avg_total_s": 9.1,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.3,
+     "total_s": 8.7,
+     "tok_s": 95.0
+    },
+    "1": {
+     "tokens": 800,
+     "ttft_s": 0.3,
+     "total_s": 9.6,
+     "tok_s": 85.8
+    }
+   }
+  },
+  {
+   "clients": 4,
+   "wall_s": 13.5,
+   "aggregate_tok_s": 236.8,
+   "per_client_tok_s": 64.7,
+   "max_wait_first_token_s": 0.5,
+   "avg_total_s": 12.8,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.5,
+     "total_s": 12.2,
+     "tok_s": 67.9
+    },
+    "3": {
+     "tokens": 800,
+     "ttft_s": 0.5,
+     "total_s": 12.6,
+     "tok_s": 65.9
+    },
+    "2": {
+     "tokens": 800,
+     "ttft_s": 0.5,
+     "total_s": 13.0,
+     "tok_s": 63.6
+    },
+    "1": {
+     "tokens": 800,
+     "ttft_s": 0.5,
+     "total_s": 13.5,
+     "tok_s": 61.3
+    }
+   }
+  }
+ ],
+ "Muse base (-np 4)": [
+  {
+   "clients": 1,
+   "wall_s": 16.6,
+   "aggregate_tok_s": 48.3,
+   "per_client_tok_s": 48.9,
+   "max_wait_first_token_s": 0.2,
+   "avg_total_s": 16.6,
+   "requests": {
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.2,
+     "total_s": 16.6,
+     "tok_s": 48.9
+    }
+   }
+  },
+  {
+   "clients": 2,
+   "wall_s": 17.3,
+   "aggregate_tok_s": 92.4,
+   "per_client_tok_s": 47.0,
+   "max_wait_first_token_s": 0.3,
+   "avg_total_s": 17.3,
+   "requests": {
+    "1": {
+     "tokens": 800,
+     "ttft_s": 0.3,
+     "total_s": 17.3,
+     "tok_s": 47.0
+    },
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.3,
+     "total_s": 17.3,
+     "tok_s": 47.0
+    }
+   }
+  },
+  {
+   "clients": 4,
+   "wall_s": 19.1,
+   "aggregate_tok_s": 167.8,
+   "per_client_tok_s": 42.8,
+   "max_wait_first_token_s": 0.4,
+   "avg_total_s": 19.1,
+   "requests": {
+    "3": {
+     "tokens": 800,
+     "ttft_s": 0.4,
+     "total_s": 19.1,
+     "tok_s": 42.8
+    },
+    "2": {
+     "tokens": 800,
+     "ttft_s": 0.4,
+     "total_s": 19.1,
+     "tok_s": 42.8
+    },
+    "0": {
+     "tokens": 800,
+     "ttft_s": 0.4,
+     "total_s": 19.1,
+     "tok_s": 42.8
+    },
+    "1": {
+     "tokens": 800,
+     "ttft_s": 0.4,
+     "total_s": 19.1,
+     "tok_s": 42.8
+    }
+   }
+  }
+ ]
+}

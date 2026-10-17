@@ -1,0 +1,19 @@
+model,kv,fits_256k,max_ctx,peak_vram_gb,gen_tps_256k,prompt_tps_256k,ttft_256k_s,h_fields_9,start,middle,end
+qwen36-35b-iq4xs,q8_0,yes,262144,21.6,84.66,4067.1,55.4,7,0,0,1
+qwen38-27b-iq4xs,q8_0,yes,262144,23.2,29.81,1545.0,146.1,8,1,0,1
+gemma4-26b-a4b-qat,q8_0,yes,262144,18.2,52.19,3996.8,56.3,6,0,0,0
+nemotron3nano-30b-iq4xs,q8_0,yes,262144,18.9,113.64,5805.4,38.6,7,0,0,1
+ornith15-q4km,q4_0,yes,262144,22.6,80.93,3845.9,58.3,7,0,0,1
+ornith10-q4km,q4_0,yes,262144,22.6,81.63,3882.8,57.8,7,0,0,1
+qwen38-27b-iq4xs-mtp6,q4_0,yes,262144,22.8,77.37,1447.3,155.1,,,,
+qwen36-27b-q4km,q4_0,yes,262144,21.8,26.75,1522.4,147.3,7,0,0,1
+qwen3coder-30b-iq4xs,q4_0,tight,262144,23.5,24.85,1635.5,137.7,7,0,0,1
+qwen3codernext-iq4xs-offload,q4_0 + CPU offload,slow,262144,21.6,35.55,424.3,525.0,7,0,0,1
+qwen36-27b-q4km-mtp6,q4_0,no,229376,,,,,,,,
+gemma4-31b-qat,q4_0,no,212992,,,,,,,,
+devstral2-24b-q4km,q4_0,no,196608,,,,,,,,
+museglimmer-30b-q4km,-,native 128K,131072,,,,,,,,
+gptoss-20b-mxfp4,-,native 128K,131072,,,,,,,,
+glm47flash-iq4xs,-,native 198K,202752,,,,,,,,
+granite41-30b-q4km-kvq4,q4_0,no,81920,,,,,,,,
+qwen38flashnext-gsq-strata,int8 + RAM,yes,262144,22.6,136.5,3480.0,64.5,8,1,0,1

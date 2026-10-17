@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RTX 4090 Coding Benchmark</title>
+<meta name="description" content="16 local LLMs on one RTX 4090 vs 6 cloud settings, 8 coding tasks designed by Claude Opus 5.5, 3 runs each.">
+<style>
+  :root {
+    --bg: #F9F9F4; --card: #FFFFFF; --ink: #1F2328; --ink2: #4B5563; --muted: #8A8F98; --line: #E3E3DC;
+    --accent: #76B900; --cloud: #F28E2B; --local: #3B6FC4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15171A; --card: #1E2125; --ink: #ECEDEE; --ink2: #B4B9C0; --muted: #868B93; --line: #2E3238;
+    }
+  }
+  :root[data-theme="dark"] { --bg: #15171A; --card: #1E2125; --ink: #ECEDEE; --ink2: #B4B9C0; --muted: #868B93; --line: #2E3238; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 -apple-system, "Segoe UI", Arial, sans-serif; }
+  main { max-width: 1120px; margin: 0 auto; padding: 40px 16px 80px; }
+  h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.1; margin: 0 0 12px; font-weight: 900; letter-spacing: -0.01em; }
+  h2 { font-size: 24px; margin: 56px 0 8px; }
+  p.lead { color: var(--ink2); font-size: 18px; max-width: 760px; margin: 0 0 24px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 24px 0 8px; }
+  .tile { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .tile .k { color: var(--ink2); font-size: 13px; }
+  .tile .v { font-size: 30px; font-weight: 800; line-height: 1.2; }
+  .tile .s { color: var(--muted); font-size: 13px; }
+  .tile.cloud { border-left: 5px solid var(--cloud); }
+  .tile.local { border-left: 5px solid var(--local); }
+  .tile.accent { border-left: 5px solid var(--accent); }
+  .section-note { color: var(--ink2); max-width: 780px; margin: 0 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+  figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  figure img { display: block; width: 100%; height: auto; background: #F9F9F4; cursor: zoom-in; }
+  figure video { display: block; width: 100%; height: auto; background: #F9F9F4; }
+  figcaption { padding: 10px 14px 14px; color: var(--ink2); font-size: 14px; }
+  figcaption b { color: var(--ink); }
+  ul { padding-left: 20px; color: var(--ink2); max-width: 780px; }
+  footer { margin-top: 64px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+  a { color: var(--local); }
+  dialog { border: none; padding: 0; background: transparent; max-width: 96vw; }
+  dialog::backdrop { background: rgba(0,0,0,.8); }
+  dialog img { max-width: 96vw; max-height: 92vh; display: block; border-radius: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>RTX 4090 Local vs Cloud Coding Benchmark</h1>
+  <p class="lead">Sixteen local models on one 24 GB GPU against six cloud settings. Eight coding tasks designed by
+    Claude Opus 5.5, graded by code, three runs each, plus two inference engines, a 256K long-context stress test and
+    a multi-user test.</p>
+
+  <div class="tiles">
+    <div class="tile cloud"><div class="k">Best cloud</div><div class="v">98.8</div><div class="s">Claude Sonnet 5.5 · medium</div></div>
+    <div class="tile local"><div class="k">Best local (tie)</div><div class="v">92.5</div><div class="s">Muse-Glimmer-30B · Qwen3.8-Flash-Next on Strata</div></div>
+    <div class="tile accent"><div class="k">Same model, other engine</div><div class="v">27 → 170</div><div class="s">tok/s, llama.cpp vs Strata</div></div>
+    <div class="tile"><div class="k">Runs below half marks</div><div class="v">64 / 582</div><div class="s">only 1 from the cloud</div></div>
+  </div>
+
+  <h2>The test</h2>
+  <p class="section-note">One factory energy (MES) domain. Hidden tests and executed queries decide correctness;
+    a correctness gate stops polished but broken answers from scoring high.</p>
+  <div class="grid">
+    <figure><img src="assets/charts/01_tasks.png" alt="Eight tasks with weights" loading="lazy"><figcaption><b>Eight tasks.</b> Python, debugging, SQL, multi-file, repo reading, log root cause, agent, long document.</figcaption></figure>
+    <figure><img src="assets/charts/02_scoring.png" alt="Scoring dimensions and weights" loading="lazy"><figcaption><b>Scoring.</b> Seven dimensions, weighted to 100, graders validated against reference solutions.</figcaption></figure>
+  </div>
+
+  <h2>Results</h2>
+  <div class="grid">
+    <figure><img src="assets/charts/03_ranking.png" alt="Ranking with run spread" loading="lazy"><figcaption><b>Ranking.</b> Cloud leads; two local setups tie at 92.5.</figcaption></figure>
+    <figure><img src="assets/charts/04_task_heatmap.png" alt="Per-task score heatmap" loading="lazy"><figcaption><b>Per task.</b> Clear-spec tasks are nearly solved locally.</figcaption></figure>
+    <figure><img src="assets/charts/05_cloud_local_gap.png" alt="Cloud vs local gap per task" loading="lazy"><figcaption><b>The gap.</b> Only repo reading (E) stays clearly behind.</figcaption></figure>
+    <figure><img src="assets/charts/15_routing.png" alt="Routing decisions" loading="lazy"><figcaption><b>Routing.</b> What to run for each need.</figcaption></figure>
+  </div>
+
+  <h2>Error analysis</h2>
+  <div class="grid">
+    <figure><img src="assets/charts/10_error_checks.png" alt="Sub-check pass rates" loading="lazy"><figcaption><b>Which check fails.</b> Tight coupling is the hardest check for everyone.</figcaption></figure>
+    <figure><img src="assets/charts/11_failure_modes.png" alt="Failure modes" loading="lazy"><figcaption><b>How runs fail.</b> Fragile code, looping agents, thinking to the cap.</figcaption></figure>
+  </div>
+
+  <h2>Efficiency</h2>
+  <div class="grid">
+    <figure><img src="assets/charts/07_generation_speed.png" alt="Generation speed" loading="lazy"><figcaption><b>Output speed.</b> Engines, MoE and drafters win.</figcaption></figure>
+    <figure><img src="assets/charts/08_reading_speed.png" alt="Reading speed and first-token time" loading="lazy"><figcaption><b>Reading speed.</b> Sets the wait before the first token.</figcaption></figure>
+    <figure><img src="assets/charts/06_quality_vs_speed.png" alt="Quality vs speed" loading="lazy"><figcaption><b>Quality vs speed.</b> Fast and best locally, at a RAM cost.</figcaption></figure>
+    <figure><img src="assets/charts/09_time_and_tokens.png" alt="Time and tokens per round" loading="lazy"><figcaption><b>Per round.</b> More thinking is not more score.</figcaption></figure>
+  </div>
+
+  <h2>Engines, builds and sharing</h2>
+  <div class="grid">
+    <figure><img src="assets/charts/18_engine_matters.png" alt="Same model on llama.cpp and Strata" loading="lazy"><figcaption><b>Same model, other engine.</b> Strata is 5.2x faster on the same file.</figcaption></figure>
+    <figure><img src="assets/charts/17_multi_user.png" alt="Throughput with one, two and four users" loading="lazy"><figcaption><b>Several users.</b> Muse-Glimmer on llama.cpp scales; Strata queues.</figcaption></figure>
+    <figure><img src="assets/charts/19_llamacpp_version.png" alt="llama.cpp b10929 vs b11609" loading="lazy"><figcaption><b>New llama.cpp.</b> Faster reading, same writing.</figcaption></figure>
+  </div>
+
+  <h2>Long context</h2>
+  <div class="grid">
+    <figure><img src="assets/charts/12_long_context_needles.png" alt="Rules used at each context length" loading="lazy"><figcaption><b>Lost in the middle.</b> At 256K no local setup finds the middle rule.</figcaption></figure>
+    <figure><img src="assets/charts/16_fit_256k.png" alt="Which models hold 256K in 24 GB" loading="lazy"><figcaption><b>Who holds 256K.</b> Eleven setups, most needing KV q4_0 or system RAM.</figcaption></figure>
+    <figure><img src="assets/charts/13_long_context_wait.png" alt="Time to first token vs prompt length" loading="lazy"><figcaption><b>The wait.</b> 146 s to first token for a dense 27B at 222K.</figcaption></figure>
+  </div>
+
+  <h2>Videos</h2>
+  <p class="section-note">Silent clips replayed from the measured timings. Code shown in the typing and multi-user clips is illustrative; every timing is measured.</p>
+  <div class="grid">
+    <figure><video src="assets/videos/05_round_clock.mp4" controls muted playsinline preload="metadata"></video><figcaption><b>One round of eight tasks.</b> Cloud and local, 60x time compression.</figcaption></figure>
+    <figure><video src="assets/videos/04_typing_speed.mp4" controls muted playsinline preload="metadata"></video><figcaption><b>Same function, four speeds.</b> 27 / 46 / 127 / 170 tok/s, real time.</figcaption></figure>
+    <figure><video src="assets/videos/03_agent_replay.mp4" controls muted playsinline preload="metadata"></video><figcaption><b>Seven steps or forty.</b> Two real agent transcripts.</figcaption></figure>
+    <figure><video src="assets/videos/01_first_token_race.mp4" controls muted playsinline preload="metadata"></video><figcaption><b>Who answers first at 225K tokens.</b> 10x time compression.</figcaption></figure>
+    <figure><video src="assets/videos/02_four_users.mp4" controls muted playsinline preload="metadata"></video><figcaption><b>Four people, one RTX 4090.</b> Real time.</figcaption></figure>
+  </div>
+
+  <h2>Method notes</h2>
+  <div class="grid">
+    <figure><img src="assets/charts/14_reasoning_and_stability.png" alt="Reasoning level and repeatability" loading="lazy"><figcaption><b>Reasoning level and repeats.</b> Higher effort helped one model and hurt another; single runs mislead.</figcaption></figure>
+  </div>
+  <ul>
+    <li>Claude Opus 5.5 designed the tasks and graders and was not scored. Two contestants are Claude models.</li>
+    <li>Local output cap was 8,192 tokens including reasoning; cloud CLIs had 32K with continuation.</li>
+    <li>The two Flash-Next scores used different 3-bit files, so engine and quantisation effects are mixed.</li>
+    <li>One RTX 4090 with 64 GB RAM, Windows 11, llama.cpp b10929 / b11609 and Strata. Python, SQL and TypeScript/Vue only.</li>
+  </ul>
+
+  <footer>Code MIT · docs, charts and data CC BY 4.0 · model weights excluded. One workstation, not a leaderboard.</footer>
+</main>
+<dialog id="zoom"><img alt=""></dialog>
+<script>
+  const dlg = document.getElementById('zoom');
+  document.querySelectorAll('figure img').forEach(img => img.addEventListener('click', () => {
+    dlg.querySelector('img').src = img.src; dlg.querySelector('img').alt = img.alt; dlg.showModal();
+  }));
+  dlg.addEventListener('click', () => dlg.close());
+</script>
+</body>
+</html>
