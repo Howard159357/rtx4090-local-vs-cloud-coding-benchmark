@@ -273,11 +273,11 @@ and re-ran task H on 117K- and 234K-token documents at temperature 0.
 
 ## Videos
 
-Five short, silent clips (1080x1350, 15-21 s) replayed from the measured timings in this repo, in `docs/assets/videos/`:
+Five short, silent clips (1080x1350, 10-21 s) replayed from the measured timings in this repo, in `docs/assets/videos/`:
 
 | File | What it shows |
 |---|---|
-| [`05_round_clock.mp4`](docs/assets/videos/05_round_clock.mp4) | One round of all 8 tasks for 8 setups, cloud and local, 60x time compression |
+| [`05_round_clock.mp4`](docs/assets/videos/05_round_clock.mp4) | One round of all 8 tasks for 8 setups, cloud and local, 120x time compression |
 | [`04_typing_speed.mp4`](docs/assets/videos/04_typing_speed.mp4) | The same function typed at four measured generation speeds (27 / 46 / 127 / 170 tok/s), real time |
 | [`03_agent_replay.mp4`](docs/assets/videos/03_agent_replay.mp4) | Two real task-G transcripts side by side: 21 tool calls and finish, versus 40 shell commands and no edit |
 | [`01_first_token_race.mp4`](docs/assets/videos/01_first_token_race.mp4) | Time to first token after a ~225K-token document, 10 setups, 10x time compression |

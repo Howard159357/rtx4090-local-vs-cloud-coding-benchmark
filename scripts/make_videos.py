@@ -6,7 +6,7 @@
                            results/raw/<model>/repeat/G@s11__*.json of the benchmark repo, 2x compressed
   04_typing_speed.mp4      the same ~260-token function typed at four measured generation speeds (master-table.csv, gen_32k), real time
   05_round_clock.mp4       one round of all 8 tasks per setup as consecutive segments, per-task mean duration_s from
-                           data/repeat-flat.csv, scores from data/source/repeat-runs.csv, 60x compressed
+                           data/repeat-flat.csv, scores from data/source/repeat-runs.csv, 120x compressed
 
 Every frame is drawn with Pillow and piped as raw RGB to the ffmpeg binary shipped by the imageio-ffmpeg pip package
 (no matplotlib, no system ffmpeg). Output: videos/*.mp4 plus three check frames per video (videos/check_0N_{a,b,c}.png).
