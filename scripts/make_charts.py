@@ -822,7 +822,8 @@ def c18_engine():
                 'build at 32K context.', 'Observed lesson',
                 'On the same GSQ-RCO file, Strata generates 5.2x and reads 10.9x faster than stock llama.cpp, because\n'
                 'it keeps frequently used experts in VRAM and moves the KV cache to RAM. Upgrading llama.cpp alone\n'
-                'gives +9%; MTP another 1.4x. Score: 92.5 on Strata vs 88.1 on llama.cpp with the unsloth file.')
+                'gives +9%; MTP another 1.4x. Score on the same file: 89.0 on llama.cpp, 92.5 on Strata (88.1 with\n'
+                'the unsloth file); three runs each, so the 3.5-point engine gap is a lean, not proof.')
     for i, (key, xl, fmt) in enumerate([('gen_32k', 'Generation at 32K (tok/s)', '{:.0f}'),
                                         ('prompt_32k', 'Prompt processing at 32K (tok/s)', '{:,.0f}')]):
         ax = fig.add_axes([0.42, 0.62 - i * 0.3, 0.5, 0.22])
