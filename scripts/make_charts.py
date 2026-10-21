@@ -369,9 +369,9 @@ def c07_generation():
     rows.sort(key=lambda r: r[1])
     fig = frame('Output Speed: Engines and Drafters Win', 'Generation tokens/s at 32K context (bar) and with the '
                 'context filled to 128K (dot).', 'Observed lesson',
-                'MoE models with ~3B active parameters generate 115-200 tok/s; dense 24-31B models 34-51, or 119-153\n'
-                'with a drafter. Flash-Next, too big for 24 GB, runs at 27 tok/s on llama.cpp (41 with MTP) and at\n'
-                '170 on Strata, which keeps hot experts in VRAM. At 128K most models keep 60-85% of their speed.')
+                'Most MoE models with ~3B active parameters generate 115-200 tok/s (GLM-4.7-Flash: 103); dense\n'
+                '24-31B models 34-49, or 119-153 with a drafter. Flash-Next, too big for 24 GB, runs at 27 tok/s on\n'
+                'llama.cpp (41 with MTP) and at 170 on Strata. At 128K most models keep 60-85% of their speed.')
     ax = fig.add_axes([0.35, 0.31, 0.58, 0.56])
     style(ax, '', 'Generation speed (tokens/s)', 'x')
     ys = range(len(rows))
@@ -400,9 +400,9 @@ def c08_reading():
     rows.sort(key=lambda r: r[1])
     fig = frame('Reading Speed Sets the Wait', 'Prompt processing tokens/s at 32K, and time to first token at 32K and '
                 'at ~110K tokens.', 'Observed lesson',
-                'MoE models read 6,000-10,500 tok/s: 110K tokens in 16-23 s. Dense models read 2,400-3,300 tok/s and\n'
-                'wait 40-60 s. Weights in system RAM are the slowest: Flash-Next on llama.cpp reads 216 tok/s, two\n'
-                'minutes before the first token at 32K. Strata reads the same model at 3,200 tok/s (10 s).')
+                'Most MoE models read 6,000-10,500 tok/s: 110K tokens in 16-23 s (GLM-4.7-Flash and\n'
+                'Qwen3-Coder-30B are slower). Dense models read 2,400-3,300 tok/s and wait 40-60 s. Weights in\n'
+                'system RAM are slowest: Flash-Next reads 216 tok/s on llama.cpp and 3,200 on Strata (10 s).')
     ax = fig.add_axes([0.35, 0.31, 0.34, 0.56])
     style(ax, '', 'Prompt processing at 32K (tok/s)', 'x')
     ys = range(len(rows))

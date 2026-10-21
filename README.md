@@ -19,8 +19,8 @@ newer models, harder tasks, repeated runs, long-context stress, engine compariso
   Strata engine with 43-47 GB of its experts in system RAM, and is steadier (±2.9 vs ±5.1).
 - **The gap left is reading a repository.** On six of eight tasks the best local score is within 3 points of
   Sonnet 5.5, and on the agent task Flash-Next on Strata scores higher. Task E is still 7 points behind.
-- **The engine matters as much as the model.** The same Flash-Next weights generate 27 tok/s on stock llama.cpp and
-  170 tok/s on Strata.
+- **The engine matters as much as the model.** On the identical 3-bit file, Flash-Next generates 33 tok/s on
+  llama.cpp and 170 tok/s on Strata (5.2x).
 - **One user and several users want different setups.** Strata is fastest for one person; Muse-Glimmer on
   llama.cpp serves four people at 237 tok/s combined.
 
@@ -177,8 +177,9 @@ four runs, fixing one bug only well enough to pass the visible tests before decl
 
 ![Quality vs speed](docs/assets/charts/06_quality_vs_speed.png)
 
-- MoE models with about 3B active parameters generate 115-200 tok/s and read 6,000-10,500 tok/s.
-- Dense 24-31B models generate 34-51 tok/s. A speculative drafter lifts them to 119-153 tok/s at +1.4 to +2.4 GB VRAM
+- Most MoE models with about 3B active parameters generate 115-200 tok/s and read 6,000-10,500 tok/s; GLM-4.7-Flash
+  is the exception (103 tok/s, reads 3,244).
+- Dense 24-31B models generate 34-49 tok/s. A speculative drafter lifts them to 119-153 tok/s at +1.4 to +2.4 GB VRAM
   with no measurable quality change; the cost is a shorter usable context (Qwen3.6-27B: 188K to 132K).
 - Flash-Next on Strata is the only top-scoring local setup that is fast out of the box (Strata's MTP drafter is
   built in). Its cost is system RAM, not VRAM.
