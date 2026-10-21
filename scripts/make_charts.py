@@ -266,7 +266,7 @@ def c04_heatmap():
                 'Reading the map',
                 'A-D (clear specs) are nearly solved by the top local setups. E (reading a whole repo) is the gap\n'
                 'that stays: no local setup reaches 62. Flash-Next on Strata reaches cloud level on G (agent) and C-D;\n'
-                'Gemma-4-31B is strong except E; Qwen3.8 collapses on D (fake tool calls instead of files).')
+                'Gemma-4-31B is strong except E; Qwen3.8-27B collapses on D (fake tool calls instead of files).')
     ax = fig.add_axes([0.35, 0.262, 0.6, 0.56])
     ms = RANKED
     data = [[fnum(REP[m][f'{t}_mean']) for t in TASKS] for m in ms]
@@ -514,9 +514,10 @@ def c10_checks():
     data = [[fnum(CHECKS[m].get(c[0])) or 0 for c in cols] for m in ms]
     fig = frame('Error Analysis: Which Check Fails', 'Pass rate of grader checks over 3 runs. E columns: share of '
                 'planted issues found.', 'Most common misses',
-                'Spotting tight coupling (E) is the hardest check: only GPT-6.1 Sol and Luna xhigh are perfect, and no\n'
-                'local setup averages above 0.81. Locally, the usual misses are code that crashes on malformed rows\n'
-                '(A), vue-tsc errors (D) and a long-document rule (H). Only Muse-Glimmer and Strata get H right.')
+                'Tight coupling (E) is the only check cloud models miss; GPT-6.1 Sol and Luna xhigh get it right.\n'
+                'No local setup averages above 0.83 on it. Locally, the usual misses are code that crashes on\n'
+                'malformed rows (A), vue-tsc errors (D) and a long-document rule (H); only Muse-Glimmer and\n'
+                'Strata get H right.')
     ax = fig.add_axes([0.32, 0.255, 0.64, 0.5])
     ax.imshow(data, cmap=GOOD, vmin=0, vmax=1, aspect='auto')
     for i, row in enumerate(data):
@@ -724,7 +725,7 @@ def c15_routing():
         ('Most repeatable', 'GPT-6.1 Sol · medium', '97.7 ± 0.2 · but 11 min/round', CLOUD),
         ('Save subscription quota', 'Haiku 5.5 medium / GPT-6 Luna xhigh', 'both above 96, no failed tasks', CLOUD),
         ('Local, one user, fastest', 'Qwen3.8-Flash-Next on Strata', '92.5 ± 2.9 · ~170 tok/s · 43-47 GB RAM', PURPLE),
-        ('Local, 2-4 users or easy to manage', 'Muse-Glimmer-30B + DFlash, -np 4', '92.5 · 237 tok/s total at 4 users · 19 GB',
+        ('Local, 2-4 users or easy to manage', 'Muse-Glimmer-30B + DFlash, -np 4', '86.2 · 237 tok/s total at 4 users · 19 GB',
          GREEN),
         ('Local, light and fast', 'Ornith-1.5-35B-A3B', '84.1 · 161 tok/s · VRAM only', LOCAL),
         ('Local, 256K context', 'Flash-Next on Strata / Qwen3.6-35B', '8/9 at 65 s, uses RAM / 7/9 at 55 s, VRAM only', LOCAL),
@@ -818,7 +819,7 @@ def c18_engine():
             ('llama.cpp b11609 + MTP · unsloth', FN_MTP, GREEN),
             ('llama.cpp b11609 · GSQ-RCO IQ3_XXS', 'qwen38flashnext-gsq-iq3xxs-b11609', BLUE),
             ('Strata · GSQ-RCO IQ3_XXS', STRATA, PURPLE)]
-    fig = frame('Same Model, Five Times Faster', 'Qwen3.8-Flash-Next (76 GB at 3-bit) on one 24 GB GPU: engine and '
+    fig = frame('Same Model, Five Times Faster', 'Qwen3.8-Flash-Next (71-76 GB at 3-bit) on one 24 GB GPU: engine and '
                 'build at 32K context.', 'Observed lesson',
                 'On the same GSQ-RCO file, Strata generates 5.2x and reads 10.9x faster than stock llama.cpp, because\n'
                 'it keeps frequently used experts in VRAM and moves the KV cache to RAM. Upgrading llama.cpp alone\n'

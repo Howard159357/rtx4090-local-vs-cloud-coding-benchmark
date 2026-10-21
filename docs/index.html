@@ -56,7 +56,7 @@
     <div class="tile cloud"><div class="k">Best cloud</div><div class="v">98.8</div><div class="s">Claude Sonnet 5.5 · medium</div></div>
     <div class="tile local"><div class="k">Best local (tie)</div><div class="v">92.5</div><div class="s">Muse-Glimmer-30B · Qwen3.8-Flash-Next on Strata</div></div>
     <div class="tile accent"><div class="k">Same file, other engine</div><div class="v">33 → 170</div><div class="s">tok/s, llama.cpp vs Strata (5.2x)</div></div>
-    <div class="tile"><div class="k">Runs below half marks</div><div class="v">64 / 582</div><div class="s">only 1 from the cloud</div></div>
+    <div class="tile"><div class="k">Runs below half marks</div><div class="v">64 / 576</div><div class="s">only 1 from the cloud</div></div>
   </div>
 
   <h2>The test</h2>
@@ -77,7 +77,7 @@
 
   <h2>Error analysis</h2>
   <div class="grid">
-    <figure><img src="assets/charts/10_error_checks.png" alt="Sub-check pass rates" loading="lazy"><figcaption><b>Which check fails.</b> Tight coupling is the hardest check for everyone.</figcaption></figure>
+    <figure><img src="assets/charts/10_error_checks.png" alt="Sub-check pass rates" loading="lazy"><figcaption><b>Which check fails.</b> Tight coupling is the only check the cloud models miss.</figcaption></figure>
     <figure><img src="assets/charts/11_failure_modes.png" alt="Failure modes" loading="lazy"><figcaption><b>How runs fail.</b> Fragile code, looping agents, thinking to the cap.</figcaption></figure>
   </div>
 
@@ -120,7 +120,7 @@
   <ul>
     <li>Claude Opus 5.5 designed the tasks and graders and was not scored. Two contestants are Claude models.</li>
     <li>Local output cap was 8,192 tokens including reasoning; cloud CLIs had 32K with continuation.</li>
-    <li>The two Flash-Next scores used different 3-bit files, so engine and quantisation effects are mixed.</li>
+    <li>A follow-up run of the same Flash-Next file on llama.cpp scored 89.0 against 92.5 on Strata, so most of the gap leans towards the engine, not conclusively.</li>
     <li>One RTX 4090 with 64 GB RAM, Windows 11, llama.cpp b10929 / b11609 and Strata. Python, SQL and TypeScript/Vue only.</li>
   </ul>
 

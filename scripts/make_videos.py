@@ -482,7 +482,6 @@ def video_users():
 
 
 # ------------------------------------------------------------------------------------------ video 3: agent replay
-RAW = 'C:/AI-Projects/coding-llm-benchmark/results/raw'
 AGENT_RUNS = [  # label, accent colour, model directory, transcript file (glob)
     ('Qwen3.8-Flash-Next · Strata', PURPLE, 'qwen38flashnext-gsq-strata', 'G@s11__20261014-222030.json'),
     ('Nemotron-3-Nano-30B', BLUE, 'nemotron3nano-30b-iq4xs', 'G@s11__*.json'),
@@ -523,9 +522,11 @@ def _result_summary(tool, args, result, first_test_run_failed=None):
 
 
 def load_agent_runs():
+    if 'BENCH_RAW' not in os.environ:
+        sys.exit(r"Set BENCH_RAW to the benchmark's results\raw folder.")
     runs = []
     for label, color, sub, pattern in AGENT_RUNS:
-        path = sorted(glob.glob(os.path.join(RAW, sub, 'repeat', pattern)))[0]
+        path = sorted(glob.glob(os.path.join(os.environ['BENCH_RAW'], sub, 'repeat', pattern)))[0]
         with open(path, encoding='utf-8') as fh:
             data = json.load(fh)
         m = data['metrics']
@@ -669,7 +670,7 @@ def video_agent():
 # ------------------------------------------------------------------------------------------ video 4: typing speed
 SLATE = '#8C9AB0'   # "before" panes: muted, so the eye goes to the optimised side
 TYPING_ROWS = [  # row label, what changed, before (master-table key, pane label, colour), after (same)
-    ('Qwen3.8-Flash-Next · 76 GB at 3-bit, mostly in system RAM', 'change: the engine',
+    ('Qwen3.8-Flash-Next · 71 GB at 3-bit, mostly in system RAM', 'change: the engine',
      ('qwen38flashnext-gsq-iq3xxs-b11609', 'llama.cpp b11609 · GSQ-RCO file', SLATE),
      ('qwen38flashnext-gsq-strata', 'Strata · same GSQ-RCO file', PURPLE)),
     ('Muse-Glimmer-30B · fully on the GPU', 'change: + DFlash drafter',
