@@ -96,8 +96,6 @@ P5B = read(os.path.join(BR, 'phase5b-256k.csv'))
 MULTI = json.load(open(os.path.join(BR, 'multiuser.json'), encoding='utf-8'))
 CHECKS = {r['model']: r for r in read(os.path.join(HERE, 'data', 'checks.csv'))}
 FLAT = read(os.path.join(HERE, 'data', 'repeat-flat.csv'))
-# Strata long-context H runs (results/raw/qwen38flashnext-gsq-strata/longctx): (tokens, ttft s, (start, mid, end))
-STRATA_LC = {'128K': (116849, 27.99, (True, True, True)), '256K': (234890, 56.78, (True, False, True))}
 LOCAL_IDS = [m for m in REP if m not in CLOUD_IDS and m != MUSE_DF]
 RANKED = [m for m in sorted(REP, key=lambda m: -fnum(REP[m]['weighted_mean'])) if m != MUSE_DF]
 TOP_LOCAL = (MUSE, STRATA)
@@ -395,7 +393,7 @@ def c08_reading():
     for m in LOCAL_IDS:
         r = MASTER[m]
         p5 = [x for x in P5 if x['model'] == m and x['ctx'] == '128K']
-        t128 = fnum(p5[0]['ttft_s']) if p5 else (STRATA_LC['128K'][1] if m == STRATA else None)
+        t128 = fnum(p5[0]['ttft_s']) if p5 else None
         rows.append((m, fnum(r['prompt_32k']), fnum(r['ttft_32k_s']), t128))
     rows.sort(key=lambda r: r[1])
     fig = frame('Reading Speed Sets the Wait', 'Prompt processing tokens/s at 32K, and time to first token at 32K and '
@@ -605,8 +603,9 @@ def c12_needles():
         if r['h_fields_9'] and r['kv'].startswith('q4') and '256K' not in grid[r['model']]:
             grid[r['model']]['256K'] = (r['start'] == '1', r['middle'] == '1', r['end'] == '1')
             kvq4.add(r['model'])
-    for c, (_, _, v) in STRATA_LC.items():
-        grid[STRATA][c] = v
+    for r in P5B:  # Strata's 256K run (KV cache in RAM, not q4)
+        if r['model'] == STRATA and r['h_fields_9']:
+            grid[STRATA]['256K'] = (r['start'] == '1', r['middle'] == '1', r['end'] == '1')
     ms = [m for m in RANKED if m in grid]
     ctxs = ['32K', '64K', '128K', '256K']
     fig = frame('Lost in the Middle', 'Task H: three binding rules at the start, middle and end. Was each one used?',
@@ -655,7 +654,6 @@ def c13_longctx_cost():
         if r['h_reused_from']:
             continue
         series.setdefault(r['model'], {})[int(r['filled_tokens'])] = fnum(r['ttft_s'])
-    series.setdefault(STRATA, {})[STRATA_LC['128K'][0]] = STRATA_LC['128K'][1]
     series[STRATA][225575] = 64.5  # strata 256K perf run (report 11.3)
     pick = [(MUSE, GREEN), ('qwen38-27b-iq4xs', BLUE), ('qwen36-35b-iq4xs', ORANGE),
             ('nemotron3nano-30b-iq4xs', TEAL), (STRATA, PURPLE)]

@@ -17,3 +17,4 @@ gemma4-26b-a4b-qat,Gemma-4-26B-A4B,256K,34.2,6,✗,✗,✗,,52.19,134.39,3996.8,
 glm47flash-iq4xs,GLM-4.7-Flash,128K,39.0,6,✗,✗,✓,,44.46,102.61,1096.8,3244.2,102.352,19.7,False,110897
 nemotron3nano-30b-iq4xs,Nemotron-3-Nano-30B,128K,45.0,7,✗,✗,✓,,152.97,201.56,7209.7,8414.5,15.581,18.3,False,110923
 nemotron3nano-30b-iq4xs,Nemotron-3-Nano-30B,256K,45.0,7,✗,✗,✓,,113.64,201.56,5805.4,8414.5,38.634,18.9,False,222315
+qwen38flashnext-gsq-strata,Qwen3.8-Flash-Next · Strata,128K,70.0,9,✓,✓,✓,,,170.5,3540.3,3228.6,27.986,,,116849
