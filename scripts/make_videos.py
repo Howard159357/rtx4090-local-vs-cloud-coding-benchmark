@@ -4,7 +4,8 @@
   02_four_users.mp4        four simultaneous users, data/source/multiuser.json (4-client entries), real time
   03_agent_replay.mp4      Task G agent transcripts (Strata Flash-Next vs Nemotron-3-Nano), two terminal panes replayed from
                            results/raw/<model>/repeat/G@s11__*.json of the benchmark repo, 2x compressed
-  04_typing_speed.mp4      the same ~260-token function typed at four measured generation speeds (master-table.csv, gen_32k), real time
+  04_typing_speed.mp4      before / after: the same ~260-token function typed at measured speeds, llama.cpp vs Strata on the
+                           same file and Muse-Glimmer without / with DFlash (master-table.csv, gen_32k), real time
   05_round_clock.mp4       one round of all 8 tasks per setup as consecutive segments, per-task mean duration_s from
                            data/repeat-flat.csv, scores from data/source/repeat-runs.csv, 120x compressed
 
@@ -666,12 +667,16 @@ def video_agent():
 
 
 # ------------------------------------------------------------------------------------------ video 4: typing speed
-TYPING_SETUPS = [  # master-table key, label, colour
-    ('qwen38flashnext-iq3xxs', 'Qwen3.8-Flash-Next · llama.cpp (weights in RAM)', BLUE),
-    ('museglimmer-30b-q4km', 'Muse-Glimmer-30B · llama.cpp', BLUE),
-    ('museglimmer-30b-q4km-dflash16', 'Muse-Glimmer-30B + DFlash', GREEN),
-    ('qwen38flashnext-gsq-strata', 'Qwen3.8-Flash-Next · Strata', PURPLE),
+SLATE = '#8C9AB0'   # "before" panes: muted, so the eye goes to the optimised side
+TYPING_ROWS = [  # row label, what changed, before (master-table key, pane label, colour), after (same)
+    ('Qwen3.8-Flash-Next · 76 GB at 3-bit, mostly in system RAM', 'change: the engine',
+     ('qwen38flashnext-gsq-iq3xxs-b11609', 'llama.cpp b11609 · GSQ-RCO file', SLATE),
+     ('qwen38flashnext-gsq-strata', 'Strata · same GSQ-RCO file', PURPLE)),
+    ('Muse-Glimmer-30B · fully on the GPU', 'change: + DFlash drafter',
+     ('museglimmer-30b-q4km', 'llama.cpp b10929', SLATE),
+     ('museglimmer-30b-q4km-dflash16', 'llama.cpp b10929 + DFlash', GREEN)),
 ]
+TYPING_SETUPS = [s for row in TYPING_ROWS for s in row[2:]]   # before, after, before, after
 CHARS_PER_TOKEN = 4
 TYPING_CODE = '''\
 import csv
@@ -775,35 +780,54 @@ def video_typing():
     n_frames = int(round((lead + t_type + hold) * FPS))
     enc = Encoder(os.path.join(OUT, '04_typing_speed.mp4'), n_frames, os.path.join(OUT, 'check_04'))
 
-    pane_w, pane_h, gap, top = 470, 383, 14, 238
-    by_speed = {s['key']: s for s in setups}
-    speeds = ', '.join(f"{s['tok_s']:.0f}" for s in setups)
+    # two rows (one model each), BEFORE on the left, AFTER on the right, an arrow with the speed-up in between
+    gap = 56
+    pane_w = (W - 2 * MARGIN - gap) // 2
+    pane_h, col_y, row_label_h, row_gap = 318, 240, 36, 22
+    rows_y = [col_y + 40, col_y + 40 + row_label_h + pane_h + row_gap]
+    v = {s['key']: s['tok_s'] for s in setups}
+    gains = [v[r[3][0]] / v[r[2][0]] for r in TYPING_ROWS]
+    pairs = ' and '.join(f"{v[r[2][0]]:.0f} / {v[r[3][0]]:.0f}" for r in TYPING_ROWS)
     for i in range(n_frames):
         t = min(i / FPS - lead, t_type)
         img, d = new_frame()
-        y = draw_header(d, 'Same Function, Four Speeds',
-                        "One 24 GB GPU. Characters appear at each setup's measured tokens/s (32K context); "
-                        'the code is illustrative.')
+        y = draw_header(d, 'Before and After, Same GPU',
+                        "Left: before. Right: one change. Characters appear at each setup's measured tokens/s "
+                        '(32K context); the code is illustrative.')
         # clock on its own line under the subtitle (the header's right-hand readout would touch the 2-line subtitle)
         f_clock = font(BOLD, 34)
         clock = f'{max(t, 0.0):4.1f} s'
         d.text((W - MARGIN, y - 6), clock, font=f_clock, fill=INK, anchor='ra')
         d.text((W - MARGIN - f_clock.getlength(clock) - 14, y + 6), 'elapsed, real time', font=font(REG, 20),
                fill=MUTED, anchor='ra')
+        f_col = font(BOLD, 22)
+        d.text((MARGIN, col_y), 'BEFORE', font=f_col, fill=MUTED)
+        d.text((MARGIN + pane_w + gap, col_y), 'AFTER', font=f_col, fill=INK)
         blink = int(i / FPS * 4) % 2 == 0
-        for u, s in enumerate(setups):
-            col, row = u % 2, u // 2
-            x0 = MARGIN + col * (pane_w + gap)
-            y0 = top + row * (pane_h + gap)
-            draw_typing_pane(d, (x0, y0, x0 + pane_w, y0 + pane_h), s, t, n_tokens, blink)
-        v = {k: f"{by_speed[k]['tok_s']:.0f}" for k in by_speed}
+        for r, (label, change, before, after) in enumerate(TYPING_ROWS):
+            ry = rows_y[r]
+            d.text((MARGIN, ry), label, font=font(BOLD, 21), fill=INK)
+            d.text((W - MARGIN, ry + 1), change, font=font(REG, 20), fill=INK2, anchor='ra')
+            y0 = ry + row_label_h
+            for c, s in enumerate(setups[2 * r: 2 * r + 2]):
+                x0 = MARGIN + c * (pane_w + gap)
+                draw_typing_pane(d, (x0, y0, x0 + pane_w, y0 + pane_h), s, t, n_tokens, blink, n_lines=8)
+            # arrow and speed-up between the two panes
+            cx, cy = MARGIN + pane_w + gap // 2, y0 + pane_h // 2
+            d.text((cx, cy - 20), f'{gains[r]:.1f}x', font=font(BOLD, 21), fill=INK, anchor='mb')
+            d.line([(cx - 20, cy), (cx + 12, cy)], fill=INK, width=4)
+            d.polygon([(cx + 22, cy), (cx + 8, cy - 10), (cx + 8, cy + 10)], fill=INK)
+        b1, a1, b2, a2 = (v[k] for r in TYPING_ROWS for k in (r[2][0], r[3][0]))
         draw_lesson(d, 1035, 1230, 'Observed lesson',
-                    f"A 76 GB model with weights in system RAM writes {v['qwen38flashnext-iq3xxs']} tok/s on llama.cpp "
-                    f"and {v['qwen38flashnext-gsq-strata']} tok/s on Strata. Fully on the GPU, Muse-Glimmer writes "
-                    f"{v['museglimmer-30b-q4km']} tok/s, {v['museglimmer-30b-q4km-dflash16']} with its DFlash drafter.")
+                    f'Same GPU, one change per row. The identical 3-bit Flash-Next file writes {b1:.0f} tok/s on '
+                    f'llama.cpp and {a1:.0f} on Strata ({gains[0]:.1f}x). Muse-Glimmer, fully on the GPU, goes from '
+                    f'{b2:.0f} to {a2:.0f} tok/s with its DFlash drafter ({gains[1]:.1f}x).')
         draw_footer(d, f'Code is illustrative; speeds are measured ({n_tokens} tokens at 1 token ≈ {CHARS_PER_TOKEN} '
-                       f'characters; {speeds} tok/s).')
+                       f'characters; {pairs} tok/s).')
         enc.write(img)
+        if i == n_frames - 1:                                    # the final frame doubles as the LinkedIn thumbnail
+            os.makedirs(os.path.join(OUT, 'thumbnails'), exist_ok=True)
+            img.save(os.path.join(OUT, 'thumbnails', '04_typing_speed_thumbnail.jpg'), quality=92)
     enc.close()
     return n_frames / FPS
 

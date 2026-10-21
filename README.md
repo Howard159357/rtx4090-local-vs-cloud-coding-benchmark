@@ -278,7 +278,7 @@ Five short, silent clips (1080x1350, 10-21 s) replayed from the measured timings
 | File | What it shows |
 |---|---|
 | [`05_round_clock.mp4`](docs/assets/videos/05_round_clock.mp4) | One round of all 8 tasks for 8 setups, cloud and local, 120x time compression |
-| [`04_typing_speed.mp4`](docs/assets/videos/04_typing_speed.mp4) | The same function typed at four measured generation speeds (27 / 46 / 127 / 170 tok/s), real time |
+| [`04_typing_speed.mp4`](docs/assets/videos/04_typing_speed.mp4) | Before and after, the same function typed at measured speeds: Flash-Next on llama.cpp vs Strata with the same file (33 → 170 tok/s), Muse-Glimmer without and with DFlash (46 → 127 tok/s), real time |
 | [`03_agent_replay.mp4`](docs/assets/videos/03_agent_replay.mp4) | Two real task-G transcripts side by side: 21 tool calls and finish, versus 40 shell commands and no edit |
 | [`01_first_token_race.mp4`](docs/assets/videos/01_first_token_race.mp4) | Time to first token after a ~225K-token document, 10 setups, 10x time compression |
 | [`02_four_users.mp4`](docs/assets/videos/02_four_users.mp4) | Four users at once: Strata queueing versus Muse-Glimmer on llama.cpp with 4 slots, real time |
